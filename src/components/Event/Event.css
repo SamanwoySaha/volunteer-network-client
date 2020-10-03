@@ -1,0 +1,24 @@
+.event {
+    position: relative;
+}
+
+.event-title-bg{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    border-radius: 0 0 10px 10px;
+    z-index: 1;
+}
+
+.event-title {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    text-align: center;
+    z-index: 2;
+    color: white;
+}

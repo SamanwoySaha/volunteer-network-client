@@ -1,0 +1,20 @@
+.header{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.nav-link {
+    text-decoration: none !important;
+    color: rgb(20, 20, 20) !important;
+    font-weight: 600 !important;
+    transition: all linear 0.4s;
+}
+
+.nav-link:hover {
+    color: #3F90FC !important;
+}
+
+.admin-btn {
+    background-color: #434141 !important;
+}

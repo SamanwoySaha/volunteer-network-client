@@ -1,4 +1,4 @@
-const activities = [
+const events = [
     {
         name: 'Child Support',
         picture: 'https://i.imgur.com/OTTRFkc.png',
@@ -81,4 +81,4 @@ const activities = [
     }
 ];
 
-export default activities;
+export default events;
