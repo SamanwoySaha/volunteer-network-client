@@ -2,8 +2,6 @@ import React, { createContext, useState } from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Home/Home';
-import Login from './components/Login/Login';
-import Registration from './components/Registration/Registration';
 import UserDetail from './components/UserDetail/UserDetail';
 import {
   BrowserRouter as Router,
@@ -11,26 +9,28 @@ import {
   Route,
 } from "react-router-dom";
 import NoMatch from './components/NoMatch/NoMatch';
+import FormContainer from './components/FormContainer/FormContainer';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [userEvent, setUserEvent] = useState({});
-  
+
   return (
-    <UserContext.Provider value={[{loggedInUser, setLoggedInUser}, {userEvent, setUserEvent}]} className="app">
+    <UserContext.Provider value={[{ loggedInUser, setLoggedInUser }, { userEvent, setUserEvent }]} className="app">
       <Router>
         <Switch>
           <Route exact path="/">
             <Home></Home>
           </Route>
           <Route path="/login">
-            <Login></Login>
+            <FormContainer></FormContainer>
           </Route>
-          <Route path="/registration">
-            <Registration></Registration>
-          </Route>
+          <PrivateRoute path="/registration">
+            <FormContainer></FormContainer>
+          </PrivateRoute>
           <Route path="/userDetail">
             <UserDetail></UserDetail>
           </Route>

@@ -1,0 +1,21 @@
+.registration-container {
+    width: 570px;
+    height: 500px;
+    background-color: #fff;
+    margin-top: 50px;
+    padding: 40px 60px;
+}
+
+.reg-input {
+    border: none !important;
+    border-bottom: 1px solid lightgrey !important;
+    border-radius: 0px !important;
+}
+
+.reg-input::placeholder {
+    position: relative;
+    left: -12px;
+    color: #222;
+    font-weight: 600;
+    font-size: 14px;
+}

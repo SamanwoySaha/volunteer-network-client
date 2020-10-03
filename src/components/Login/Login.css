@@ -1,0 +1,27 @@
+.login-form {
+    margin-top: 50px;
+    width: 570px;
+    height: 450px;
+    background: white;
+    border-radius: 5px;
+    border: 2px solid lightgrey;
+}
+
+.login-btn {
+    width: 420px;
+    border-radius: 30px !important;
+    background-color: white !important;
+    border: 1px solid lightgrey !important;
+    position: relative !important;
+    color: #222 !important;
+    margin: 20px 0 10px;
+    padding: 10px !important;
+}
+
+.google-img {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%) !important;
+    width: 8%;
+}

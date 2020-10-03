@@ -1,5 +1,6 @@
 .event {
     position: relative;
+    cursor: pointer;
 }
 
 .event-title-bg{
