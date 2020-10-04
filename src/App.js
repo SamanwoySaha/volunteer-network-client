@@ -31,9 +31,9 @@ function App() {
           <PrivateRoute path="/registration">
             <FormContainer></FormContainer>
           </PrivateRoute>
-          <Route path="/userDetail">
+          <PrivateRoute path="/userDetail">
             <UserDetail></UserDetail>
-          </Route>
+          </PrivateRoute>
           <Route path="/dashboard">
             <Dashboard></Dashboard>
           </Route>

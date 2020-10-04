@@ -1,0 +1,43 @@
+.dashboard {
+    height: 100vh;
+    background-color: #E5E5E5;
+}
+
+.dashboard-sidebar {
+    width: 30%;
+    background-color: #fff;
+    height: 100vh;
+    padding: 20px 60px; 
+}
+
+.sidebar-link {
+    margin-bottom: 25px;
+    font-weight: 600;
+    position: relative;
+    left: 0;
+    transition: all linear 0.4s;
+}
+
+.sidebar-link:hover {
+    text-decoration: none;
+    left: 5px;
+}
+
+.dashboard-container {
+    width: 70%;
+    height: 90px;
+    background-color: #fff;
+}
+
+.dashboard-title {
+    line-height: 90px;
+    font-weight: 700;
+    margin-left: 40px;
+}
+
+.dashboard-content {
+    margin: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+}

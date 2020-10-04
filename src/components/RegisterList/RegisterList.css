@@ -1,0 +1,28 @@
+.table-header {
+    background-color: #F5F6FA;
+    border-radius: 10px;
+    color: #686868;
+    font-weight: 400 !important;
+}
+
+.delete-btn {
+    background-color: #FF444A;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn::before {
+    font-size: 20px;
+    position: absolute;
+    content: '\f2ed';
+    font-family: "Font Awesome 5 Free";
+    top: 0;
+    left: 50%;
+    z-index: 1;
+    transform: translateX(-50%);
+    color: #fff;
+}

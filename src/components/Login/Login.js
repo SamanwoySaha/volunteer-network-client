@@ -17,9 +17,8 @@ const Login = () => {
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
 
-    const handleSignIn = () => {
+    const handleGoogleSignIn = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
-
         firebase.auth().signInWithPopup(provider)
             .then(res => {
                 const userInfo = {
@@ -35,7 +34,7 @@ const Login = () => {
     return (
         <div className="login-form d-flex flex-column justify-content-center align-items-center">
             <h4 style={{ fontWeight: '700' }}>Login With</h4>
-            <Button onClick={handleSignIn} className="primary login-btn">
+            <Button onClick={handleGoogleSignIn} className="primary login-btn">
                 <img className="google-img" src="https://img.icons8.com/color/48/000000/google-logo.png" alt="" />
                     Continue with Google
                 </Button>

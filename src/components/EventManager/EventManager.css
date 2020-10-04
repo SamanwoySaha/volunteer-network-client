@@ -1,0 +1,24 @@
+.eventManager {
+    border-radius: 10px;
+}
+
+.event-form-input {
+    width: 450px !important;
+    margin-bottom: 20px;
+}
+
+textarea {
+    height: 120px !important;
+}
+
+label {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.file-input-btn{
+    border-radius: 5px;
+    border: 2px solid #0084FF;
+    background-color: #E5F3FF;
+}

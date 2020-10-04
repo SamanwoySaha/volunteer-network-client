@@ -1,0 +1,29 @@
+.userDetail {
+    background-color: #eeeeee;
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+.userEvent-container {
+    padding-top: 130px;
+}
+
+.singleEvent{
+    position: relative;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+}
+
+.singleEvent.col-md-6{
+    flex: 0 0 48%;
+}
+
+.cancel-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: #E3E3E3 !important;
+    color: #787878 !important;
+    border: none !important;
+}

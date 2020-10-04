@@ -13,12 +13,8 @@ const FormContainer = () => {
             <Link to="/">
                 <img style={{ width: '200px' }} src="https://i.imgur.com/fZBQnjh.png" alt="logo" />
             </Link>
-            {
-                path === '/login' && <Login></Login>
-            }
-            {
-                path === '/registration' && <Registration></Registration>
-            }
+            { path === '/login' && <Login></Login> }
+            { path === '/registration' && <Registration></Registration> }
         </Container>
     );
 };
