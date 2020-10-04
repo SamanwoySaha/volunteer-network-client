@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
-import { Link, Route, useRouteMatch } from 'react-router-dom';
+import { Link, Route, useHistory, useRouteMatch } from 'react-router-dom';
 import EventManager from '../EventManager/EventManager';
 import RegisterList from '../RegisterList/RegisterList';
 import './Dashboard.css';
@@ -10,7 +10,9 @@ import { Switch } from 'react-router-dom';
 
 const Dashboard = () => {
     const { path, url } = useRouteMatch();
-    const [activeState, setActiveState] = useState(sessionStorage.getItem('dashboardState') || 'registerList');
+    const [activeState, setActiveState] = useState(
+        sessionStorage.getItem('dashboardState') || 'registerList'
+    );
 
     const handleStateChange = (stateName) => {
         setActiveState(stateName);

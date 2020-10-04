@@ -12,16 +12,16 @@ const UserDetail = () => {
     const [{ loggedInUser, setLoggedInUser }] = useContext(UserContext);
 
     useEffect(() => {
-        fetch('http://localhost:5000/volunteerDetail?email=' + loggedInUser.userEmail)
+        fetch('https://immense-sea-30158.herokuapp.com/volunteerDetail?email=' + loggedInUser.userEmail)
             .then(res => res.json())
             .then(data => setVolunteerDetail(data))
             .catch(err => console.log(err))
     }, []);
 
     const handleCancelRegistration = event => {
-        fetch('http://localhost:5000/removeEvent', {
+        fetch('https://immense-sea-30158.herokuapp.com/removeEvent', {
             method: 'DELETE',
-            body: JSON.stringify({id: event._id}),
+            body: JSON.stringify({ id: event._id }),
             headers: { 'Content-Type': 'application/json' }
         })
             .then(res => res.json())

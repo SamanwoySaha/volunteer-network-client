@@ -24,7 +24,7 @@ const Event = ({ event }) => {
 
     return (
         <div className="event my-3" onClick={handleClick}>
-            <img className="w-100" src={picture} alt="event-pic"/>
+            <img className="event-pic w-100" src={picture} alt="event-pic"/>
             <h5 className="event-title">{name}</h5>
             <div className="event-title-bg" style={{backgroundColor: `${titleBgColors[1]}`}}></div>
         </div>

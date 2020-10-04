@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import './RegisterList.css';
+import moment from 'moment';
 
 const RegisterList = () => {
     const [volunteerList, setVolunteerList] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/volunteerList')
+        fetch('https://immense-sea-30158.herokuapp.com/volunteerList')
             .then(res => res.json())
             .then(data => setVolunteerList(data))
             .catch(err => console.log(err));
     });
 
     const handleRemoveVolunteer = (volunteerId) => {
-        fetch('http://localhost:5000/removeVolunteer', {
+        fetch('https://immense-sea-30158.herokuapp.com/removeVolunteer', {
             method: 'DELETE',
             body: JSON.stringify({ id: volunteerId }),
             headers: { 'Content-Type': 'application/json' }
         })
-        .then(res => res.json())
-        .then(data => setVolunteerList(data))
-        .catch(err => console.log(err));
+            .then(res => res.json())
+            .then(data => setVolunteerList(data))
+            .catch(err => console.log(err));
     }
 
     return (
@@ -37,12 +38,12 @@ const RegisterList = () => {
             <tbody>
                 {
                     volunteerList.map(volunteer => {
-                        const {name, email, eventName, eventDate} = volunteer;
+                        const { name, email, eventName, eventDate } = volunteer;
                         return (
-                            <tr>
+                            <tr key={volunteer._id}>
                                 <td>{name}</td>
                                 <td>{email}</td>
-                                <td>{(eventDate)}</td>
+                                <td>{moment(eventDate).format('DD-MM-YYYY')}</td>
                                 <td>{eventName}</td>
                                 <td onClick={() => handleRemoveVolunteer(volunteer._id)} className="text-center">
                                     <div className="delete-btn"></div>
