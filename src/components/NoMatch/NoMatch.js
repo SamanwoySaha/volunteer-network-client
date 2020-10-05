@@ -1,9 +1,11 @@
 import React from 'react';
+import './NoMatch.css';
+import Header from '../Header/Header';
 
 const NoMatch = () => {
     return (
-        <div>
-            <h1>404 not found</h1>
+        <div className="no-match">
+            <Header></Header>
         </div>
     );
 };

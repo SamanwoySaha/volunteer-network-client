@@ -23,11 +23,12 @@ const EventManager = () => {
             body: data,
             headers: { 'Authorization': `Client-ID ${clientId}` }
         })
-            .then(res => res.json())
-            .then(data => {
-                addEvent(data.data.link);
-            })
-            .catch(err => console.log(err))
+        .then(res => res.json())
+        .then(data => {
+            addEvent(data.data.link);
+        })
+        .catch(err => console.log(err))
+
         e.preventDefault();
     }
 
@@ -48,7 +49,6 @@ const EventManager = () => {
             .then(data => {
                 if (data) {
                     toggleMessage();
-                    setTimeout(toggleMessage(), 1000);
                 }
             })
     }
@@ -89,7 +89,7 @@ const EventManager = () => {
                         <strong className="mr-auto">Event Manager</strong>
                         <small>1 mins ago</small>
                     </Toast.Header>
-                    <Toast.Body>New Event is added on the <strong>Homepage</strong></Toast.Body>
+                    <Toast.Body><strong>New Event</strong> is added on the <strong>Homepage</strong></Toast.Body>
                 </Toast>
                 <Button className="align-self-end mt-auto" type="submit"
                     variant="primary" style={{ width: '110px' }}>

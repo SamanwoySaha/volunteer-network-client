@@ -9,9 +9,9 @@ import { useHistory, useParams } from 'react-router-dom';
 
 const Registration = () => {
     const {id} = useParams();
-    const [eventInfo, setEventInfo] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const { userName, userEmail } = loggedInUser;
+    const [eventInfo, setEventInfo] = useState({});
     const [startDate, setStartDate] = useState(null);
     const name = useRef('');
     const email = useRef('');
@@ -36,17 +36,19 @@ const Registration = () => {
             eventInfo: eventDescription.current.value,
             eventPic: eventInfo.picture
         }
+
         fetch('https://immense-sea-30158.herokuapp.com/addVolunteer', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(volunteerDetails)
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data) {
-                    history.push("/userDetail");
-                }
-            })
+        .then(res => res.json())
+        .then(data => {
+            if (data) {
+                history.push("/userDetail");
+            }
+        })
+        
         e.preventDefault();
     }
 

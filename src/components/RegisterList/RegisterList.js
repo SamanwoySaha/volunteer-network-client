@@ -5,7 +5,7 @@ import moment from 'moment';
 
 const RegisterList = () => {
     const [volunteerList, setVolunteerList] = useState([]);
-    const [currentState, setcurrentState] = useState(false);
+    const [currentState, setCurrentState] = useState(false);
 
     useEffect(() => {
         fetch('https://immense-sea-30158.herokuapp.com/volunteerList')
@@ -20,13 +20,13 @@ const RegisterList = () => {
             body: JSON.stringify({ id: volunteerId }),
             headers: { 'Content-Type': 'application/json' }
         })
-            .then(res => res.json())
-            .then(data => {
-                if(data){
-                    setcurrentState(!currentState);
-                }
-            })
-            .catch(err => console.log(err));
+        .then(res => res.json())
+        .then(data => {
+            if(data){
+                setCurrentState(!currentState);
+            }
+        })
+        .catch(err => console.log(err));
     }
 
     return (

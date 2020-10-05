@@ -9,9 +9,9 @@ import { UserContext } from '../../App';
 import { signOut } from '../Login/LoginManager';
 
 const Header = () => {
-    const {path} = useRouteMatch();
+    const { path } = useRouteMatch();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const {id} = useParams();
+    const { id } = useParams();
 
     const handleLogOut = () => {
         signOut()
@@ -35,7 +35,7 @@ const Header = () => {
                     {
                         path === '/userDetail'
                             ? <>
-                                <img style={{ width: '6%'}} src="https://img.icons8.com/cotton/64/000000/user-male--v1.png" alt=""/>
+                                <img style={{ width: '6%' }} src="https://img.icons8.com/cotton/64/000000/user-male--v1.png" alt="" />
                                 <Nav.Link className="ml-0 nav-link">{loggedInUser.userName}</Nav.Link>
                                 <Button onClick={handleLogOut} className="px-4" variant="primary">Logout</Button>
                             </>

@@ -25,5 +25,5 @@ yarn-error.log*
 #firebase config 
 src/components/Login/firebase.config.js
 
-#imgur
+#imgur api id
 .env

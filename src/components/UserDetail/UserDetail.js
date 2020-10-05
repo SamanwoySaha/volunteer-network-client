@@ -26,13 +26,13 @@ const UserDetail = () => {
             body: JSON.stringify({ id: event._id }),
             headers: { 'Content-Type': 'application/json' }
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data) {
-                    setCurrentState(!currentState);
-                }
-            })
-            .catch(err => console.log(err));
+        .then(res => res.json())
+        .then(data => {
+            if (data) {
+                setCurrentState(!currentState);
+            }
+        })
+        .catch(err => console.log(err));
     }
 
     return (
@@ -47,8 +47,13 @@ const UserDetail = () => {
                                     <img style={{ width: '194px', height: '173px' }} src={singleEvent.eventPic} alt="" />
                                     <div className="ml-3">
                                         <h5 className="event-name">{singleEvent.eventName}</h5>
-                                        <p className="event-date">{moment(singleEvent.eventDate).format('DD MMM, YYYY')}</p>
-                                        <Button onClick={() => handleCancelRegistration(singleEvent)} className="cancel-btn">Cancel</Button>
+                                        <p className="event-date">
+                                            {moment(singleEvent.eventDate).format('DD MMM, YYYY')}
+                                        </p>
+                                        <Button onClick={() => handleCancelRegistration(singleEvent)} 
+                                            className="cancel-btn">
+                                            Cancel
+                                        </Button>
                                     </div>
                                 </Col>
                             );

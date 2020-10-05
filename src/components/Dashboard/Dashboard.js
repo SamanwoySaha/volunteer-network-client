@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
-import { Link, Route, useHistory, useRouteMatch } from 'react-router-dom';
+import { Link, Route, useRouteMatch } from 'react-router-dom';
 import EventManager from '../EventManager/EventManager';
 import RegisterList from '../RegisterList/RegisterList';
 import './Dashboard.css';
@@ -29,13 +29,13 @@ const Dashboard = () => {
                     className={`sidebar-link ${activeState === 'registerList' ? '' : 'text-black-50'}`}
                     to={`${url}/registerList`}>
                     <FontAwesomeIcon className="mr-3" icon={faUserFriends} />
-                        Volunteer register list
+                    Volunteer register list
                 </Link>
                 <Link onClick={() => handleStateChange('eventManager')}
                     className={`sidebar-link ${activeState === 'eventManager' ? '' : 'text-black-50'}`}
                     to={`${url}/eventManager`}>
                     <FontAwesomeIcon className="mr-3 ml-1" icon={faPlus} />
-                        Add Event
+                    Add Event
                 </Link>
             </div>
             <div className="dashboard-container">
