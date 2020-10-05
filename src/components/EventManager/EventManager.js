@@ -72,7 +72,7 @@ const EventManager = () => {
                 <DatePicker className="form-control event-form-input" name="date" selected={startDate}
                     onChange={date => setStartDate(date)} placeholderText="Date" required />
                 <label>Banner</label>
-                <label className="file-input-btn" for="eventBanner">
+                <label className="file-input-btn" htmlFor="eventBanner">
                     <img className="mr-1" style={{ width: '17%' }} src="https://i.imgur.com/0EKqSum.png" alt="" />
                     Upload Image
                 </label>

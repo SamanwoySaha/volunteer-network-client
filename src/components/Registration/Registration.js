@@ -13,10 +13,6 @@ const Registration = () => {
     const { userName, userEmail } = loggedInUser;
     const [eventInfo, setEventInfo] = useState({});
     const [startDate, setStartDate] = useState(null);
-    const name = useRef('');
-    const email = useRef('');
-    const eventDate = useRef('');
-    const eventName = useRef('');
     const eventDescription = useRef('');
     const history = useHistory();
 
@@ -29,9 +25,9 @@ const Registration = () => {
 
     const handleSubmit = (e) => {
         const volunteerDetails = {
-            name: name.current.value,
-            email: email.current.value,
-            eventName: eventName.current.value,
+            name: userName,
+            email: userEmail,
+            eventName: eventInfo.name,
             eventDate: startDate,
             eventInfo: eventDescription.current.value,
             eventPic: eventInfo.picture
@@ -59,19 +55,19 @@ const Registration = () => {
         >
             <h4 style={{ fontWeight: '700', marginRight: 'auto' }}>Register as a Volunteer</h4>
             <Form.Control
-                className="form-control reg-input" ref={name} type="text" name="username"
+                className="form-control reg-input" type="text" name="username"
                 value={userName} placeholder="Full Name" required />
             <Form.Control
-                className="form-control reg-input" ref={email} type="email" name="email"
+                className="form-control reg-input" type="email" name="email"
                 value={userEmail} placeholder="Username or Email" required />
             <DatePicker
-                className="form-control reg-input" ref={eventDate} selected={startDate}
+                className="form-control reg-input" selected={startDate}
                 onChange={date => setStartDate(date)} placeholderText="Date" required />
             <Form.Control
                 className="form-control reg-input" ref={eventDescription} type="text"
                 name="description" placeholder="Description" required />
             <Form.Control
-                className="form-control reg-input" ref={eventName} type="text" name="eventName"
+                className="form-control reg-input" type="text" name="eventName"
                 value={eventInfo.name} placeholder="Event Name" required />
             <Button type="submit" className="primary">Registration</Button>
         </Form>
