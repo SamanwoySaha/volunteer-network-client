@@ -5,15 +5,18 @@ import "react-datepicker/dist/react-datepicker.css";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Toast from 'react-bootstrap/Toast';
+import Spinner from 'react-bootstrap/Spinner';
 
 const EventManager = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [showMessage, setShowMessage] = useState(false);
     const toggleMessage = () => setShowMessage(!showMessage);
+    const [spinnerState, setSpinnerState] = useState(false);
     const eventTitle = useRef();
     const description = useRef();
 
     const handleSubmit = (e) => {
+        setSpinnerState(!spinnerState);
         const clientId = `${process.env.REACT_APP_IMGUR_API_ID}`;
         let data = new FormData();
         data.append('image', document.getElementById('eventBanner').files[0]);
@@ -48,6 +51,7 @@ const EventManager = () => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
+                    setSpinnerState(!spinnerState);
                     toggleMessage();
                 }
             })
@@ -92,7 +96,11 @@ const EventManager = () => {
                     <Toast.Body><strong>New Event</strong> is added on the <strong>Homepage</strong></Toast.Body>
                 </Toast>
                 <Button className="align-self-end mt-auto" type="submit"
-                    variant="primary" style={{ width: '110px' }}>
+                    variant="primary" style={{ width: '130px' }}>
+                    {
+                        spinnerState && 
+                        <Spinner className="mr-2" size="sm" animation="border" variant="warning" />
+                    }                    
                     Submit
                 </Button>
             </div>
