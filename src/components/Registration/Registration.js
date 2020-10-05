@@ -1,22 +1,31 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { UserContext } from '../../App';
 import './Registration.css';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 const Registration = () => {
-    const [{ loggedInUser, setLoggedInUser }, { userEvent, setUserEvent }] = useContext(UserContext);
+    const {id} = useParams();
+    const [eventInfo, setEventInfo] = useState({});
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const { userName, userEmail } = loggedInUser;
     const [startDate, setStartDate] = useState(null);
-    const name = useRef();
-    const email = useRef();
-    const eventDate = useRef();
-    const eventName = useRef();
-    const eventDescription = useRef();
+    const name = useRef('');
+    const email = useRef('');
+    const eventDate = useRef('');
+    const eventName = useRef('');
+    const eventDescription = useRef('');
     const history = useHistory();
+
+    useEffect(() => {
+        fetch(`https://immense-sea-30158.herokuapp.com/eventById/${id}`)
+        .then(res => res.json())
+        .then(data => setEventInfo(data[0]))
+        .catch(err => console.log(err));
+    }, []);
 
     const handleSubmit = (e) => {
         const volunteerDetails = {
@@ -25,7 +34,7 @@ const Registration = () => {
             eventName: eventName.current.value,
             eventDate: startDate,
             eventInfo: eventDescription.current.value,
-            eventPic: userEvent.picture
+            eventPic: eventInfo.picture
         }
         fetch('https://immense-sea-30158.herokuapp.com/addVolunteer', {
             method: 'POST',
@@ -61,7 +70,7 @@ const Registration = () => {
                 name="description" placeholder="Description" required />
             <Form.Control
                 className="form-control reg-input" ref={eventName} type="text" name="eventName"
-                value={userEvent.name} placeholder="Event Name" required />
+                value={eventInfo.name} placeholder="Event Name" required />
             <Button type="submit" className="primary">Registration</Button>
         </Form>
     );

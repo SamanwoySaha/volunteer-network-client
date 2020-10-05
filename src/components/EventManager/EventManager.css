@@ -17,8 +17,21 @@ label {
     margin-bottom: 5px;
 }
 
-.file-input-btn{
-    border-radius: 5px;
-    border: 2px solid #0084FF;
-    background-color: #E5F3FF;
+.file-input.form-control-file{
+    display: none !important;  
 }
+
+.file-input-btn{
+    width: 173px;
+    height: 40px;
+    background-color: #E5F3FF;
+    border: 2px solid #0084FF;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 40px;
+    color: #0084FF;
+    cursor: pointer;
+}
+

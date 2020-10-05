@@ -5,13 +5,14 @@ import moment from 'moment';
 
 const RegisterList = () => {
     const [volunteerList, setVolunteerList] = useState([]);
+    const [currentState, setcurrentState] = useState(false);
 
     useEffect(() => {
         fetch('https://immense-sea-30158.herokuapp.com/volunteerList')
             .then(res => res.json())
             .then(data => setVolunteerList(data))
             .catch(err => console.log(err));
-    });
+    }, [currentState]);
 
     const handleRemoveVolunteer = (volunteerId) => {
         fetch('https://immense-sea-30158.herokuapp.com/removeVolunteer', {
@@ -20,13 +21,17 @@ const RegisterList = () => {
             headers: { 'Content-Type': 'application/json' }
         })
             .then(res => res.json())
-            .then(data => setVolunteerList(data))
+            .then(data => {
+                if(data){
+                    setcurrentState(!currentState);
+                }
+            })
             .catch(err => console.log(err));
     }
 
     return (
         <Table borderless responsive="md">
-            <thead className="table-header">
+            <thead>
                 <tr>
                     <th>Name</th>
                     <th>Email ID</th>

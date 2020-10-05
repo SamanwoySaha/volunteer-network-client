@@ -1,34 +1,23 @@
 import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import './Login.css';
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import firebaseConfig from './firebase.config';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
-
-
-firebase.initializeApp(firebaseConfig);
-
+import { signInWithGoogle } from './LoginManager';
 
 const Login = () => {
-    const [{ loggedInUser, setLoggedInUser }, { userEvent, setUserEvent }] = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
 
     const handleGoogleSignIn = () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider)
+        signInWithGoogle()
             .then(res => {
-                const userInfo = {
-                    userName: res.user.displayName,
-                    userEmail: res.user.email,
-                };
-                setLoggedInUser(userInfo);
+                setLoggedInUser(res);
                 history.replace(from);
             })
-            .catch(err => console.log(err.message));
+            .catch(err => console.log(err))
     }
 
     return (

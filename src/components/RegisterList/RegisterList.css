@@ -1,8 +1,13 @@
-.table-header {
+thead{
     background-color: #F5F6FA;
     border-radius: 10px;
     color: #686868;
-    font-weight: 400 !important;
+    font-weight: 300 !important;  
+}
+
+tbody {
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .delete-btn {

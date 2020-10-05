@@ -4,12 +4,20 @@ import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import './Header.css';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useParams, useRouteMatch } from 'react-router-dom';
 import { UserContext } from '../../App';
+import { signOut } from '../Login/LoginManager';
 
 const Header = () => {
     const {path} = useRouteMatch();
-    const [{ loggedInUser, setLoggedInUser}] = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {id} = useParams();
+
+    const handleLogOut = () => {
+        signOut()
+        .then(res => setLoggedInUser(res))
+        .catch(err => console.log(err))
+    }
 
     return (
         <Navbar bg="none" variant="light" className="header" fixed="top">
@@ -26,9 +34,13 @@ const Header = () => {
                     <Link className="mx-3 nav-link" to="#">Blog</Link>
                     {
                         path === '/userDetail'
-                            ? <Nav.Link className="ml-3 nav-link">{loggedInUser.userName}</Nav.Link>
+                            ? <>
+                                <img style={{ width: '6%'}} src="https://img.icons8.com/cotton/64/000000/user-male--v1.png" alt=""/>
+                                <Nav.Link className="ml-0 nav-link">{loggedInUser.userName}</Nav.Link>
+                                <Button onClick={handleLogOut} className="px-4" variant="primary">Logout</Button>
+                            </>
                             : <>
-                                <Link className="ml-3" to="/registration">
+                                <Link className="ml-3" to={`/registration/${id}`}>
                                     <Button className="px-4" variant="primary">Register</Button>
                                 </Link>
                                 <Link className="ml-3" to="/dashboard/registerList">

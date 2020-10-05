@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { UserContext } from '../../App';
 import './Event.css';
 
 const Event = ({ event }) => {
     const history = useHistory();
-    const {name, picture} = event;
-    const [ , {userEvent, setUserEvent}] = useContext(UserContext);
+    const {name, picture, _id} = event;
     const titleBgColors = ['#FFBD3E', '#FF7044', '#3F90FC', '#421FCF'];
 
     const shuffle = a => {
@@ -18,8 +16,7 @@ const Event = ({ event }) => {
     shuffle(titleBgColors);
 
     const handleClick = () => {
-        setUserEvent(event);
-        history.push('/registration');
+        history.push(`/registration/${_id}`);
     }
 
     return (

@@ -11,25 +11,30 @@ import {
 import NoMatch from './components/NoMatch/NoMatch';
 import FormContainer from './components/FormContainer/FormContainer';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Login from './components/Login/Login';
+import Registration from './components/Registration/Registration';
 
 export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
-  const [userEvent, setUserEvent] = useState({});
 
   return (
-    <UserContext.Provider value={[{ loggedInUser, setLoggedInUser }, { userEvent, setUserEvent }]} className="app">
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]} className="app">
       <Router>
         <Switch>
           <Route exact path="/">
             <Home></Home>
           </Route>
           <Route path="/login">
-            <FormContainer></FormContainer>
+            <FormContainer>
+              <Login></Login>
+            </FormContainer>
           </Route>
-          <PrivateRoute path="/registration">
-            <FormContainer></FormContainer>
+          <PrivateRoute path="/registration/:id">
+            <FormContainer>
+              <Registration></Registration>
+            </FormContainer>
           </PrivateRoute>
           <PrivateRoute path="/userDetail">
             <UserDetail></UserDetail>

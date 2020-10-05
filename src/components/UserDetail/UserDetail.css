@@ -27,3 +27,11 @@
     color: #787878 !important;
     border: none !important;
 }
+
+.event-name{
+    font-weight: 700;
+}
+
+.event-date {
+    font-weight: 600;
+}
